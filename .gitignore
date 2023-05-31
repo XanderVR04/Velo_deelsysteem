@@ -7,7 +7,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-extra.py
+python/extra.py
 
 site
 
