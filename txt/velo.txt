@@ -1,0 +1,4 @@
+Er zijn meerdere python files waarin ik classes heb aangemaakt. Ik importeer die classes uiteindelijk in één class genaamd Velo.
+Deze class zit in de "velo.py".
+De classes zijn te vinden in de bestanden: "fietsen.py", "gebruiker.py", "medewerker.py", "naam.py", "slot.py", "station.py".
+Vervolgens heb ik ook een html template met bijhorende CSS om de info over de stations te kunnen laten zien.

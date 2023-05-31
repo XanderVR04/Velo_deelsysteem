@@ -1,0 +1,65 @@
+class Velo:
+    def __init__(self):
+        self.station = Station
+        self.slot = Slot
+        self.bike = Bike
+        self.user = User
+        self.biketransporter =  BikeTransporter
+
+class Station:
+    def __init__(self, id, name, location, capacity):
+        self.id = id
+        self.name = name
+        self.location = location
+        self.capacity = capacity
+        self.slots = [Slot() for _ in range(capacity)]
+    def add_bike():
+        print("iets")
+    def rem_bike():
+        print("iets")
+
+class Slot:
+    def __init__(self, id):
+        self.bike = None
+        self.id = id
+
+class Bike:
+    def __init__(self, id, slot, user_id):
+        self.id = id
+        self.slot = slot
+        self.user_id = user_id
+
+class User:
+    def __init__(self, id):
+        self.id = id
+        self.bike = None
+
+class BikeTransporter(User):
+    def __init__(self, id):
+        super().__init__(id)
+        self.capacity = 20
+        self.bikes = []
+
+    def load_bikes(self, station):
+        empty_slots = [slot for slot in station.slots if slot.bike is None]
+        bikes_to_load = min(self.capacity, len(empty_slots))
+        for slot in empty_slots[:bikes_to_load]:
+            bike = self.bikes.pop(0)
+            bike.slot = slot
+            slot.bike = bike
+
+    def unload_bikes(self, station):
+        full_slots = [slot for slot in station.slots if slot.bike is not None]
+        bikes_to_unload = min(self.capacity, len(full_slots))
+        for slot in full_slots[:bikes_to_unload]:
+            bike = slot.bike
+            bike.slot = None
+            slot.bike = None
+            self.bikes.append(bike)
+
+class Log:
+    def __init__(self):
+        self.entries = []
+
+    def log_move(self, entity, from_location, to_location):
+        self.entries.append((entity, from_location, to_location))
